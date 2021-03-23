@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-Name: Idscp2Client
+SAP-AdapterName: Idscp2Client
+Bundle-Vendor: SAP
+Bundle-SymbolicName: Idscp2Client
+Bundle-Version: 1.0
+SAP-NodeType: IFLMAP
+SAP-BundleType: IntegrationAdapter

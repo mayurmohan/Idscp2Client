@@ -1,0 +1,7 @@
+#Properties file
+#Fri Mar 19 11:49:29 IST 2021
+Adapter-Name=Idscp2Client
+Enable-Maven=true
+Adapter-Vendor=SAP
+Adapter-ID=Idscp2Client
+Adapter-Version=1.0
