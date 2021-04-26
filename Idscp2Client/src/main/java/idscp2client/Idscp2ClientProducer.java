@@ -18,6 +18,8 @@ package idscp2client;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,11 +41,24 @@ public class Idscp2ClientProducer extends DefaultProducer {
     }
 
     public void process(final Exchange exchange) throws Exception {
+    	
         String input = exchange.getIn().getBody(String.class);
 		String greetingMessage = endpoint.getGreetingsMessage();
 		if(greetingMessage == null || greetingMessage.isEmpty()) {
 			greetingMessage = "Hello!";
 		}
+		
+		String header ="";
+		
+		if(exchange.getIn().getHeader("IDS_MSG")!=null) {
+			header= exchange.getIn().getHeader("IDS_MSG").toString();
+		}
+		
+		if(header == "") {
+			header = "IDS_MSG";
+		}
+		
+		IDSClient.sendMessageToIDS(greetingMessage,header);
 		String messageInUpperCase = greetingMessage.toUpperCase();
 		if (input != null) {
 		    LOG.debug(input);

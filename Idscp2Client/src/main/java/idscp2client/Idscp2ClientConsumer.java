@@ -20,6 +20,7 @@ import java.util.Date;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.camel.impl.DefaultConsumer;
 import org.apache.camel.impl.ScheduledPollConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Sample.com consumer.
  */
-public class Idscp2ClientConsumer extends ScheduledPollConsumer {
+public class Idscp2ClientConsumer extends DefaultConsumer {
     private Logger LOG = LoggerFactory.getLogger(Idscp2ClientConsumer.class);
 
     private final Idscp2ClientEndpoint endpoint;
@@ -43,7 +44,14 @@ public class Idscp2ClientConsumer extends ScheduledPollConsumer {
     protected void doStart() throws Exception {
         super.doStart();
     }
+    
+	@Override
+	protected void doStop() throws Exception {
+			super.doStop();
+		
+	}
 
+    /*
     @Override
     protected int poll() throws Exception {
         Exchange exchange = endpoint.createExchange();
@@ -72,4 +80,5 @@ public class Idscp2ClientConsumer extends ScheduledPollConsumer {
             }
         }
     }
+    */
 }
